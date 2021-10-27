@@ -27,7 +27,7 @@ sudo wget -O /usr/share/keyrings/element-io-archive-keyring.gpg https://packages
 wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
 cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
-  tee -a /etc/apt/sources.list.d/signal-xenial.list
+  sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
@@ -42,3 +42,14 @@ sudo apt install -y macchanger
 sudo apt install -y dotnet-sdk-5.0
 sudo apt install -y veracrypt
 
+#Install nginx and php-fpm
+sudo apt install -y nginx
+sudo apt install -y php7.4-fpm
+
+#Move nginx related files
+sudo cp files/default /etc/nginx/sites-available/default
+sudo cp files/index.php /var/www/html/index.php
+sudo cp files/hosts /etc/hosts
+
+#Restart nginx service
+sudo service nginx restart
