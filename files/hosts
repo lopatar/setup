@@ -16,6 +16,8 @@
 127.0.0.1   twitter.com
 127.0.0.1   google.cz
 127.0.0.1   www.google.cz
+127.0.0.1   youtu.be
+127.0.0.1   www.youtu.be
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback

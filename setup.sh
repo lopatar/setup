@@ -16,6 +16,7 @@ sudo apt install -y snapd
 sudo snap install keepassxc
 sudo snap install codium
 sudo snap install netbeans --classic
+sudo snap install discord
 
 #Install wget
 sudo apt install -y wget apt-transport-https

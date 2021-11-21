@@ -28,9 +28,17 @@ $nitter_instances = [
     'https://nitter.snopyta.org',
 ];
 
+$host_parts = explode('.', $host);
+
+$host = ($host_parts[0] === 'www') ? $host_parts[1] . '.' .  $host_parts[2] : $host_parts[0] . '.' . $host_parts[1];
+
 switch ($host) {
     case 'youtube.com':
         redirect($invidious_instances[random_int(0, count($invidious_instances) - 1)], $_SERVER['REQUEST_URI']);
+        break;
+    case 'youtu.be':
+        $request_uri = '/watch?v=' . substr($_SERVER['REQUEST_URI'], 1);
+        redirect($invidious_instances[random_int(0, count($invidious_instances) - 1)], $request_uri);
         break;
     case 'pastebin.com':
         redirect($privatebin_instances[random_int(0, count($privatebin_instances) - 1)]);
@@ -56,3 +64,4 @@ switch ($host) {
 }
 
 ?>
+

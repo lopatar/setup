@@ -7,6 +7,7 @@ sudo ifconfig wlp3s0 up
 #Connect to wireguard server
 sudo wg quick up contabo
 #Clear output
+clear
 echo Connect to the internet and press any key, system will be updated afterwards.
 #Wait for input
 read dummy
