@@ -1,7 +1,7 @@
 # Usage
 
 ```
-git clone https://git.disroot.org/dBbSxAJV/setup.git
+git clone https://github.com/lopatar/setup.git
 chmod +x setup.sh
 sudo bash start.sh
 ```
