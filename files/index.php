@@ -64,4 +64,3 @@ switch ($host) {
 }
 
 ?>
-
