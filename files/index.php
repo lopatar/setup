@@ -5,6 +5,10 @@ function redirect($host, $query_string = '') {
     header("Location: $url");
 }
 
+function select_random($array) {
+    return $array[random_int(0, count($array - 1))];
+}
+
 $host = $_SERVER['HTTP_HOST'];
 
 $invidious_instances = [
@@ -34,14 +38,14 @@ $host = ($host_parts[0] === 'www') ? $host_parts[1] . '.' .  $host_parts[2] : $h
 
 switch ($host) {
     case 'youtube.com':
-        redirect($invidious_instances[random_int(0, count($invidious_instances) - 1)], $_SERVER['REQUEST_URI']);
+        redirect(select_random($invidious_instances), $_SERVER['REQUEST_URI']);
         break;
     case 'youtu.be':
         $request_uri = '/watch?v=' . substr($_SERVER['REQUEST_URI'], 1);
-        redirect($invidious_instances[random_int(0, count($invidious_instances) - 1)], $request_uri);
+        redirect(select_random($invidious_instances), $request_uri);
         break;
     case 'pastebin.com':
-        redirect($privatebin_instances[random_int(0, count($privatebin_instances) - 1)]);
+        redirect(select_random($privatebin_instances));
         break;
     case 'translate.google.com':
         redirect('https://lingva.ml');
@@ -50,10 +54,10 @@ switch ($host) {
         redirect('https://lingva.ml');
         break;
     case 'anonfiles.com':
-        redirect($upload_instances[random_int(0, count($upload_instances) - 1)]);
+        redirect(select_random($upload_instances));
         break;
     case 'twitter.com':
-        redirect($nitter_instances[random_int(0, count($nitter_instances) - 1)], $_SERVER['REQUEST_URI']);
+        redirect(select_random($nitter_instances), $_SERVER['REQUEST_URI']);
         break;
     case 'google.com':
         redirect('https://duckduckgo.com');
