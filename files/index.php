@@ -59,7 +59,7 @@ switch ($host) {
         redirect(select_random($upload_instances));
         break;
     case 'twitter.com':
-        redirect(select_random($nitter_instances));
+        redirect(select_random($nitter_instances), $_SERVER['REQUEST_URI']);
         break;
     case 'google.com':
         redirect('https://duckduckgo.com');
