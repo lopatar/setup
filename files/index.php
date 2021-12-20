@@ -6,7 +6,7 @@ function redirect($host, $query_string = '') {
 }
 
 function select_random($array) {
-    return $array[random_int(0, count($array - 1))];
+    return $array[random_int(0, count($array) + 1)];
 }
 
 $host = $_SERVER['HTTP_HOST'];
@@ -14,7 +14,8 @@ $host = $_SERVER['HTTP_HOST'];
 $invidious_instances = [
     'https://invidious.namazso.eu',
     'https://invidious.snopyta.org',
-    'https://invidious.kavin.rocks'
+    'https://invidious.kavin.rocks',
+    'https://yewtu.be'
 ];
 
 $privatebin_instances = [
@@ -30,6 +31,7 @@ $upload_instances = [
 
 $nitter_instances = [
     'https://nitter.snopyta.org',
+    'https://nitter.net'
 ];
 
 $host_parts = explode('.', $host);
@@ -57,7 +59,7 @@ switch ($host) {
         redirect(select_random($upload_instances));
         break;
     case 'twitter.com':
-        redirect(select_random($nitter_instances), $_SERVER['REQUEST_URI']);
+        redirect(select_random($nitter_instances));
         break;
     case 'google.com':
         redirect('https://duckduckgo.com');
